@@ -1,0 +1,22 @@
+apiVersion: frrk8s.metallb.io/v1beta1
+kind: FRRConfiguration
+metadata:
+  name: eth0-ipv6-tor
+  namespace: frr-k8s
+spec:
+  raw:
+    rawConfig: |-
+      interface eth0
+        ipv6 nd ra-interval 6
+        no ipv6 nd suppress-ra
+      exit
+      !
+      router bgp 64560
+        neighbor vrouter peer-group
+        neighbor vrouter remote-as 64530
+        neighbor eth0 interface v6only peer-group vrouter 
+        bgp fast-convergence
+      !
+      address-family ipv4 unicast
+        neighbor vrouter activate
+      !
