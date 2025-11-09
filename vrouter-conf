@@ -1,0 +1,5 @@
+#vyos vrouter config
+set protocols bgp neighbor eth0 interface v6only peer-group 'k8s'
+set protocols bgp peer-group k8s address-family ipv4-unicast
+set protocols bgp peer-group k8s remote-as '64560'
+set protocols bgp system-as '64530'
