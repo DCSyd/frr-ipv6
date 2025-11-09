@@ -1,7 +1,7 @@
 apiVersion: frrk8s.metallb.io/v1beta1
 kind: FRRConfiguration
 metadata:
-  name: eth0-ipv6-tor
+  name: eth0-ipv6-vrouter
   namespace: frr-k8s
 spec:
   raw:
